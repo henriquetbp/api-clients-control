@@ -11,25 +11,25 @@ Clone este repositório e execute o comando `docker-compose up`.
 
 ## Documentação da API
 
-ENDPOINT `/api/clientes`
+ENDPOINT `/api/cliente`
 
 | Método   | Descrição    |
 | ----------  |---------------------------------- |
 | `POST` | Cadastro de um novo cliente. |
 
-ENDPOINT `/api/clientes/{id}`
+ENDPOINT `/api/cliente/{id}`
 
 | Método   | Descrição    |
 | --------|---------------------------------- |
 | `PUT` | Edição de um cliente já existente. |
 
-ENDPOINT `/api/clientes/{id}`
+ENDPOINT `/api/cliente/{id}`
 
 | Método   | Descrição    |
 | ----------|---------------------------------- |
 | `DELETE` | Remoção de um cliente existente. |
 
-ENDPOINT `/api/clientes/{id}`
+ENDPOINT `/api/cliente/{id}`
 
 | Método   | Descrição    |
 | ------  |---------------------------------- |
