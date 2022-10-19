@@ -1,0 +1,49 @@
+version: "3.1"
+
+services:
+  db:
+    user: root
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=jn2
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 5s
+      retries: 10
+    networks:
+      - app-network
+  setup:
+    build:
+      dockerfile: apache.dockerfile
+      context: .docker
+    restart: "no"
+    command: /bin/sh -c "/entrypoint.sh"
+    volumes:
+      - "./src:/app"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+  web:
+    build:
+      dockerfile: apache.dockerfile
+      context: .docker
+    volumes:
+      - "./src:/app"
+    ports:
+      - 80:80
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
