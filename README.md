@@ -1,5 +1,5 @@
 
-# JN2 - Sistema de Controle de Clientes
+# Sistema de Controle de Clientes
 
 API REST para controle de clientes desenvolvido em PHP utilizando framework Laravel e banco de dados MySQL.
 
